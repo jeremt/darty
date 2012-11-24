@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+}
+
+#container {
+  width: 70%;
+  margin: auto;
+  max-width: 700px;
+}
+
+.name {
+  font-size: 8.4em;
+  opacity: 0.05;
+  position: absolute;
+  top: -42px;
+  line-height: 0;
+  left: 0;
+  z-index: -999;
+}
+
+input {
+  border: none;
+  font-size: 1em;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+input:focus {
+  outline: none;
+}

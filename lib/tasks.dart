@@ -3,6 +3,7 @@ library tasks;
 
 import 'dart:html';
 import 'dart:core';
+import 'task.dart';
 
 class Tasks {
 
@@ -10,7 +11,7 @@ class Tasks {
   InputElement _input;
 
   /**
-   * Initialize a `Tasks` list.
+   * Initialize a `elems` list.
    */
 
   Tasks(String list, String input) {
@@ -21,34 +22,48 @@ class Tasks {
   }
 
   /**
-   * Start the tasks
+   * Start the elems
    */
 
   void start() {
+
     _input.on.change.add((Event e) {
       add(_input.value);
       _input.value = '';
     });
+
   }
 
   /**
-   * Add a new `task` at the end of the list.
+   * Add a new `elem` at the end of the list.
    */
 
-  void add(String task) {
+  void add(String content) {
 
-    DivElement elem;
-
-    elem = new DivElement();
-    elem.classes.add('task');
-    elem.text = task;
-    elem.elements.add(_deleteBtn());
-    _list.elements.add(elem);
+    Task task = new Task(content);
+    _list.elements.add(task.el);
+    task.del.on.click.add(_delete);
 
   }
 
   /**
-   * Delete a task.
+   * Sort the list.
+   */
+
+  void sort() {
+    print('Not implemented yet.');
+  }
+
+  /**
+   * Clear the list.
+   */
+
+  void clear() {
+    print('Not implemented yet.');
+  }
+
+  /**
+   * Delete a elem.
    */
 
   void _delete(Event e) {
@@ -56,7 +71,7 @@ class Tasks {
   }
 
   /**
-   * Add a delete btn to the task you just add.
+   * Add a delete btn to the elem you just add.
    */
 
   ButtonElement _deleteBtn() {
@@ -69,6 +84,18 @@ class Tasks {
     btn.on.click.add(_delete);
     return btn;
 
+  }
+
+  /**
+   * Return a `List` of tasks
+   */
+
+  List get() {
+    List list = [];
+    _list.elements.forEach((el) {
+      if (el.text.length != 0) list.add(el.text);
+    });
+    return list;
   }
 
 }

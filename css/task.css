@@ -1,0 +1,28 @@
+.elem {
+  padding: 10px;
+  border-top: 1px dashed rgba(0, 0, 0, .1);
+}
+
+.elem:hover .delete {
+  display: block;
+}
+
+.elem .delete {
+  border: none;
+  background: rgba(0, 0, 0, .05);
+  color: rgba(0, 0, 0, .5);
+  padding: 3px 7px;
+  float: right;
+  cursor: pointer;
+  display: none;
+}
+
+.elem .delete:hover {
+  color: white;
+  background: rgba(0, 0, 0, .8);
+}
+
+.elem.checked {
+  color: green;
+  background: rgba(0, 255, 0, .05);
+}
